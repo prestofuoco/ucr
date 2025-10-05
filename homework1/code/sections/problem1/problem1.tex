@@ -1,11 +1,14 @@
 \section{Developing RAW images}
+In this problem, we will use the provided RAW image \texttt{Thayer.CR2} 
+in order to implement a basic image processing pipeline.
 
 \subsection{Implementing a basic image processing pipeline}
 
 \subsubsection*{RAW image conversion}
+
 Calling \texttt{dcraw -4 -d -v -w -T Thayer.CR2} 
 converts the RAW image to a TIFF file without any color interpolation. 
-We observe the CLI output
+We observe the CLI output:
 \begin{Verbatim}[fontsize=\small]
     Loading Canon EOS 2000D image from Thayer.CR2 ...
     Scaling with darkness 2044, saturation 16383, and
@@ -15,3 +18,7 @@ We observe the CLI output
 \end{Verbatim}
 where our multipliers represent \texttt{<r\_scale> <g\_scale> <b\_scale> <g\_scale>},
 and darkness and saturation represent the black and white levels, respectively.
+
+\noindent We then call \texttt{dcraw -4 -D -T Thayer.CR2} to convert the RAW image to a TIFF file 
+without any color interpolation or white balancing, obtaining a grayscale image that  
+we will use for the remainder of the problem.
