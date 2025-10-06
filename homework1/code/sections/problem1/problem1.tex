@@ -4,8 +4,8 @@ in order to implement a basic image processing pipeline.
 
 \subsection{Implementing a basic image processing pipeline}
 
-\subsubsection*{RAW image conversion}
 
+\textbf{RAW image conversion.}
 Calling \texttt{dcraw -4 -d -v -w -T Thayer.CR2} 
 converts the RAW image to a TIFF file without any color interpolation. 
 We observe the CLI output:
@@ -19,6 +19,10 @@ We observe the CLI output:
 where our multipliers represent \texttt{<r\_scale> <g\_scale> <b\_scale> <g\_scale>},
 and darkness and saturation represent the black and white levels, respectively.
 
-\noindent We then call \texttt{dcraw -4 -D -T Thayer.CR2} to convert the RAW image to a TIFF file 
+We then call \texttt{dcraw -4 -D -T Thayer.CR2} to convert the RAW image to a TIFF file 
 without any color interpolation or white balancing, obtaining a grayscale image that  
-we will use for the remainder of the problem.
+we will use for the remainder of the problem.\\
+
+
+\noindent\textbf{Python initials.}
+Using \texttt{skimage} and \texttt{imread},
