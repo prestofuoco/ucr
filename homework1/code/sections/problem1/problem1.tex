@@ -25,4 +25,13 @@ we will use for the remainder of the problem.\\
 
 
 \noindent\textbf{Python initials.}
-Using \texttt{skimage} and \texttt{imread},
+Using \texttt{skimage}'s \texttt{imread}, we are able to read the image and obtain its values. 
+We can then apply a linear transformation to the image so that the value \texttt{<black>} is 
+mapped to 0, and the value \texttt{<white>} is mapped to 1. We then clip the negative 
+values to 0, and values greater than 1 to 1.
+
+We can achieve this by recalling our values from the reconnaissance run of \texttt{dcraw} and
+writing the transformation as:
+\begin{equation}
+    \text{linearized image} = \frac{\text{image} - \texttt{<black>}}{\texttt{<white>} - \texttt{<black>}}
+\end{equation}
