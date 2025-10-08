@@ -1,0 +1,69 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref, amsmath, amssymb, amsthm, graphicx, fancyvrb, enumitem, titlesec, setspace, float, fancyvrb, minted}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[top=1in, bottom=1in, left=1.25in, right=1.25in]{geometry}
+
+\titleformat{\section}{\normalfont\bfseries}{}{0em}{}
+\titlespacing*{\section}{0pt}{1.5ex plus .2ex minus .2ex}{0.8ex plus .1ex}
+\begin{document}
+\noindent Andre Winkel \hfill \today \\
+\rule{\textwidth}{0.4pt}
+
+\begin{center} \large {\textbf{Lab 1}} \\[0em] {EE141, Digital Signal Processing, Fall 2025} \end{center}
+
+\section{Problem 1: Converting functions into zero-pole-gain form}
+In this problem, we are given a series of functions in transfer function form 
+to convert into zero-pole-gain form. We can do so by using the \texttt{matlab} function 
+\texttt{roots([coefficients])} to find the zeros and poles of the functions.
+\begin{enumerate}[label=\textbf{\alph*)}, leftmargin=2.6em]
+    \item Given the transfer function
+    \begin{equation} \notag
+        H(z) = \frac{2+16z^{-1}+34z^{-2}+20z^{-3}}{1-10z^{-1}+35z^{-2}-50z^{-3}+24z^{-4}}
+    \end{equation}
+    we can find the zeros and poles by finding the roots of the numerator and denominator, respectively.
+    Finding them in MATLAB and plugging them into our standard zero-pole-gain form, we get
+    \begin{equation} \notag
+        H(z) = 2\frac{z(z+1)(z+2)(z+5)}{(z-1)(z-2)(z-3)(z-4)}
+    \end{equation}
+
+    \item Given the transfer function
+    \begin{equation} \notag
+        H(z) = \frac{10-21z^{-1}+14z^{-2}-3z^{-3}}{3-3z^{-1}-6z^{-2}}
+    \end{equation}
+    we do the same process as above to find the zeros and poles. Finding them in MATLAB gives us 
+    \begin{equation} \notag
+        H(z) = \frac{10}{3}\frac{(z-0.5)(z-0.6)(z-1)}{z(z+1)(z-2)}
+    \end{equation}
+
+    \item And again, given the transfer function
+    \begin{equation} \notag
+        H(z) = \frac{1-z^{-4}}{1-z^{-8}}
+    \end{equation}
+    we find
+    \begin{equation} \notag
+        H(z) = \frac{(z+1)(z-j)(z+j)(z-1)}{(z+1)()}
+    \end{equation}
+\end{enumerate}
+
+
+\section{Problem 2: Converting functions into transfer function form}
+\begin{enumerate}[label=\textbf{\alph*)}, leftmargin=2.6em]
+    \item 
+\end{enumerate}
+
+
+\section{Problem 3: Finding partial fraction expansions}
+\begin{enumerate}[label=\textbf{\alph*)}, leftmargin=2.6em]
+    \item 
+\end{enumerate}
+
+
+\section{Problem 4: Plotting the pole-zero diagrams}
+In this problem, we will plot the pole-zero diagrams using our values obtained in problem 1.
+We will use the \texttt{zplane(zeros, poles)} function to plot the pole-zero diagrams.
+\begin{enumerate}[label=\textbf{\alph*)}, leftmargin=2.6em]
+    \item 
+\end{enumerate}
+
+\end{document}
