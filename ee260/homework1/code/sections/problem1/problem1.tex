@@ -1,0 +1,37 @@
+\section{Developing RAW images}
+In this problem, we will use the provided RAW image \texttt{Thayer.CR2} 
+in order to implement a basic image processing pipeline.
+
+\subsection{Implementing a basic image processing pipeline}
+
+
+\textbf{RAW image conversion.}
+Calling \texttt{dcraw -4 -d -v -w -T Thayer.CR2} 
+converts the RAW image to a TIFF file without any color interpolation. 
+We observe the CLI output:
+\begin{Verbatim}[fontsize=\small]
+    Loading Canon EOS 2000D image from Thayer.CR2 ...
+    Scaling with darkness 2044, saturation 16383, and
+    multipliers 2.165039 1.000000 1.643555 1.000000
+    Building histograms...
+    Writing data to Thayer.tiff ...
+\end{Verbatim}
+where our multipliers represent \texttt{<r\_scale> <g\_scale> <b\_scale> <g\_scale>},
+and darkness and saturation represent the black and white levels, respectively.
+
+We then call \texttt{dcraw -4 -D -T Thayer.CR2} to convert the RAW image to a TIFF file 
+without any color interpolation or white balancing, obtaining a grayscale image that  
+we will use for the remainder of the problem.\\
+
+
+\noindent\textbf{Python initials.}
+Using \texttt{skimage}'s \texttt{imread}, we are able to read the image and obtain its values. 
+We can then apply a linear transformation to the image so that the value \texttt{<black>} is 
+mapped to 0, and the value \texttt{<white>} is mapped to 1. We then clip the negative 
+values to 0, and values greater than 1 to 1.
+
+We can achieve this by recalling our values from the reconnaissance run of \texttt{dcraw} and
+writing the transformation as:
+\begin{equation}
+    \text{linearized image} = \frac{\text{image} - \texttt{<black>}}{\texttt{<white>} - \texttt{<black>}}
+\end{equation}
