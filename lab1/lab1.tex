@@ -15,7 +15,7 @@
 \section{Problem 1: Converting functions into zero-pole-gain form}
 In this problem, we are given a series of functions in transfer function form 
 to convert into zero-pole-gain form. We can do so by using the \texttt{matlab} function 
-\texttt{roots([coefficients])} to find the zeros and poles of the functions.
+\texttt{roots(coefficients)} to find the zeros and poles of the functions.
 \begin{enumerate}[label=\textbf{\alph*)}, leftmargin=2.6em]
     \item Given the transfer function
     \begin{equation} \notag
@@ -24,7 +24,7 @@ to convert into zero-pole-gain form. We can do so by using the \texttt{matlab} f
     we can find the zeros and poles by finding the roots of the numerator and denominator, respectively.
     Finding them in MATLAB and plugging them into our standard zero-pole-gain form, we get
     \begin{equation} \notag
-        H(z) = 2\frac{z(z+1)(z+2)(z+5)}{(z-1)(z-2)(z-3)(z-4)}
+        H(z) = 2\frac{z(z+1)(z+2)(z+5)}{(z-1)(z-2)(z-3)(z-4)}.
     \end{equation}
 
     \item Given the transfer function
@@ -33,23 +33,51 @@ to convert into zero-pole-gain form. We can do so by using the \texttt{matlab} f
     \end{equation}
     we do the same process as above to find the zeros and poles. Finding them in MATLAB gives us 
     \begin{equation} \notag
-        H(z) = \frac{10}{3}\frac{(z-0.5)(z-0.6)(z-1)}{z(z+1)(z-2)}
+        H(z) = \frac{10}{3}\frac{(z-0.5)(z-0.6)(z-1)}{z(z+1)(z-2)}.
     \end{equation}
 
     \item And again, given the transfer function
     \begin{equation} \notag
         H(z) = \frac{1-z^{-4}}{1-z^{-8}}
     \end{equation}
-    we find
+    we find our poles, zeros, and gain which reduce to
     \begin{equation} \notag
-        H(z) = \frac{(z+1)(z-j)(z+j)(z-1)}{(z+1)()}
+        H(z) = \frac{z^{4}}
+        {(z+\frac{\sqrt2}{2}-\frac{\sqrt2}{2}j)(z+\frac{\sqrt2}{2}+\frac{\sqrt2}{2}j)(z-\frac{\sqrt2}{2}-\frac{\sqrt2}{2}j)(z-\frac{\sqrt2}{2}+\frac{\sqrt2}{2}j)}.
     \end{equation}
 \end{enumerate}
 
 
 \section{Problem 2: Converting functions into transfer function form}
+In this problem, we are given a series of functions in pole-zero-gain form
+to convert into transfer function form. We can do so by using the \texttt{matlab} function
+\texttt{poly(roots)} to find the polynomial that correlates to the provided roots.
 \begin{enumerate}[label=\textbf{\alph*)}, leftmargin=2.6em]
-    \item 
+    \item Given the pole-zero-gain function
+    \begin{equation} \notag
+        H(z) = 8 \frac{(z-5)(z+3)(z-1)}{(z-6)(z+11)(z+2)}
+    \end{equation}
+    we can find the polynomials corresponding to the poles and zeros in MATLAB. We 
+    can plug the polynomials and gain into our standard transfer function form, wherein we observe
+    our transfer function as
+    \begin{equation} \notag
+        H(z) = \frac{z^3+3z^2-13z-15}{z^3-7z^2-56z+132}.
+    \end{equation}
+    In standard form, this is equivalent to
+    \begin{equation} \notag
+        H(z) = \frac{1+3z^{-1}-13z^{-2}-15z^{-3}}{1-7z^{-1}-56z^{-2}+132z^{-3}}.
+    \end{equation}
+
+    \item Given the pole-zero-gain function
+    \begin{equation} \notag
+        H(z) = 
+    \end{equation}
+    we follow the same steps as before to find the transfer function
+    \begin{equation} \notag
+        H(z) = 
+    \end{equation}
+
+    \item Given the pole-zero-gain function
 \end{enumerate}
 
 
