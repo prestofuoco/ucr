@@ -61,29 +61,56 @@ to convert into transfer function form. We can do so by using the \texttt{matlab
     can plug the polynomials and gain into our standard transfer function form, wherein we observe
     our transfer function as
     \begin{equation} \notag
-        H(z) = \frac{z^3+3z^2-13z-15}{z^3-7z^2-56z+132}.
+        H(z) = 8\frac{z^3-3z^2-13z+15}{z^3-7z^2-56z+132}.
     \end{equation}
     In standard form, this is equivalent to
     \begin{equation} \notag
-        H(z) = \frac{1+3z^{-1}-13z^{-2}-15z^{-3}}{1-7z^{-1}-56z^{-2}+132z^{-3}}.
+        H(z) = \frac{8-24z^{-1}-104z^{-2}+120z^{-3}}{1+7z^{-1}-56z^{-2}-132z^{-3}}.
     \end{equation}
 
     \item Given the pole-zero-gain function
     \begin{equation} \notag
-        H(z) = 
+        H(z) = 2\frac{(z-2)(z-2-j)(z-2+j)}{(z-3)(z+2)(z+j)(z-j)}
     \end{equation}
     we follow the same steps as before to find the transfer function
     \begin{equation} \notag
-        H(z) = 
+        H(z) = \frac{2-12z^{-1}+26z^{-2}-20z^{-3}}{1-z^{-1}-5z^{-2}-1z^{-3}-6z^{-4}}.
     \end{equation}
 
     \item Given the pole-zero-gain function
+    \begin{equation} \notag
+        H(z) = -3\frac{(z+1)(z-1)(z+j)(z-j)}{z(z-2)}
+    \end{equation}
+    we follow the same steps as before to find the transfer function
+    \begin{equation} \notag
+        H(z) = \frac{-3z^2+3z^{-2}}{1-2z^{-1}}.
+    \end{equation}
 \end{enumerate}
 
 
 \section{Problem 3: Finding partial fraction expansions}
+In this problem, we are given a series of functions to convert into partial fraction form. 
+We can do so by using the \texttt{matlab} function \texttt{[r,p,k]=residue(b,a)} 
+to find the partial fraction expansion of the given functions.
 \begin{enumerate}[label=\textbf{\alph*)}, leftmargin=2.6em]
-    \item 
+    \item Given the function
+    \begin{equation} \notag
+        H(z) = 2\frac{(z+1)(z-1)}{z(z-4)}
+    \end{equation}
+    we can call the MATLAB function to find that our corresponding values allow us to 
+    directly plug in values to observe the standard partial fraction expansion form as
+    \begin{equation} \notag
+        H(z) = \frac{7.5}{z-4} + \frac{0.5}{z} + 2.
+    \end{equation}
+
+    \item Doing the same for the function
+    \begin{equation} \notag
+        H(z) = \frac{z^3+1}{z^2+1}
+    \end{equation}
+    we observe
+    \begin{equation} \notag
+        H(z) = \frac{-0.5-0.5j}{z-j} + \frac{-0.5+0.5j}{z+j} + z.
+    \end{equation}
 \end{enumerate}
 
 
@@ -91,7 +118,23 @@ to convert into transfer function form. We can do so by using the \texttt{matlab
 In this problem, we will plot the pole-zero diagrams using our values obtained in problem 1.
 We will use the \texttt{zplane(zeros, poles)} function to plot the pole-zero diagrams.
 \begin{enumerate}[label=\textbf{\alph*)}, leftmargin=2.6em]
-    \item 
+    \item For the first transfer function, we observe the following plot: 
+    \begin{figure} [H]
+        \centering
+        \includegraphics[width=0.5\linewidth]{fig1.png}
+    \end{figure}
+
+    \item Again, for the second transfer function, we observe the following:
+    \begin{figure} [H]
+        \centering
+        \includegraphics[width=0.5\linewidth]{fig2.png}
+    \end{figure}
+
+    \item And finally:
+    \begin{figure} [H]
+        \centering
+        \includegraphics[width=0.5\linewidth]{fig3.png}
+    \end{figure}
 \end{enumerate}
 
 \end{document}
