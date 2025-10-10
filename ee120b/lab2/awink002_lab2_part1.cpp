@@ -4,11 +4,10 @@ Discussion Section: 024
 Assignment: Lab #2  Exercise #1
 Exercise Description: moving leds left and right
 I acknowledge all content contained herein, excluding template or example code, is my own original work.
-Demo Link: <URL>
+Demo Link: https://youtu.be/qYHZye4PDrY
 */
 
 #include <avr/io.h>
-#include <avr/iom328p.h>
 
 unsigned char SetBit(unsigned char x, unsigned char k, unsigned char b) {
    return (b ?  (x | (0x01 << k))  :  (x & ~(0x01 << k)) );
