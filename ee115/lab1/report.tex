@@ -19,7 +19,7 @@ its minimum value larger than or equal to $-1$, and also examine its impact on t
 efficiency of conventional amplitude modulation (AM) signals.
 \begin{enumerate}[label=\textbf{\alph*)}, leftmargin=2.6em]
     \item We begin by using the Gaussian-random-number generator to generate a random sequence
-    \begin{equation}
+    \begin{equation} \notag
         m[1], m[2], \dots, m[N]
     \end{equation}
     where we will set $N$ as $200$ [a large integer].
@@ -85,6 +85,22 @@ of the DC blocker,
 \begin{enumerate}[label=\textbf{\alph*)}, leftmargin=2.6em]
     \item Plotting $|H(f)|$ versus $f$ for $|f|<B$ for each of $RC=0.01,0.1,1,10$, we
     observe the following plots:
+    \begin{figure} [H]
+        \centering
+        \includegraphics[width=0.4\linewidth]{plot2.png}
+        \includegraphics[width=0.4\linewidth]{plot3.png}
+        \includegraphics[width=0.4\linewidth]{plot4.png}
+        \includegraphics[width=0.4\linewidth]{plot5.png}
+    \end{figure}
+    Here, we chose $B$ such that $B=\frac{10}{2\pi RC}$ for each of the
+    respective $RC$ values. This is an appropriate choice, as it allows us to
+    observe the behavior of $|H(f)|$ as it approaches its asymptotic value
+    of $1$. We are also able to observe the stopband behavior of the DC blocker
+    as $f$ approaches $0$, and everything in between.
+
+    \item 
+
+
 \end{enumerate}
 
 \end{document}
