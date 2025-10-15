@@ -107,7 +107,18 @@ of the DC blocker,
         \includegraphics[width=0.4\linewidth]{plot8.png}
         \includegraphics[width=0.4\linewidth]{plot9.png}
     \end{figure}
+    and we observe that MATLAB dictates our filter to bottom out at $-40\text{dB}$. We
+    also know that the ideal filter will have a gain of $-\infty\text{dB}$ at $f=0$.
 
+    \item Considering our transfer function $H(f)$ and the requirement $0.95<=|H(f=20\text{Hz})<=1$, 
+    we can find that
+    \begin{equation} \notag
+        \text{RC}_{\text{min}} = \sqrt{\frac{(\text{gain}_\text{min}=0.95)^2}{(2\pi f)^2 \cdot (1-(\text{gain}_\text{min}=0.95)^2)}}.
+    \end{equation}
+    Using MATLAB to solve, we determine
+    \begin{equation} \notag
+        \text{RC}_{\text{min}} \approx 0.0242.
+    \end{equation}
 \end{enumerate}
 
 \end{document}
