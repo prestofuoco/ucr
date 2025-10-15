@@ -5,3 +5,6 @@
 *.gz
 *.zip
 *.minted
+*.fdb_latexmk
+*.fls
+*.asv
