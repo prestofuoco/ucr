@@ -16,9 +16,9 @@ Demo Link:
 
 void ADC_init() {
     // TODO: figure out register values
-    ADMUX = /*insert your value for ADMUX*/;
-    ADCSRA = /*insert your value for ADCSRA*/;
-    ADCSRB = /*insert your value for ADCSRB*/;
+    ADMUX = (1 << REFS0);
+    ADCSRA = (1 << ADEN) | (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0);
+    ADCSRB = 0x00;
   }
   
   
