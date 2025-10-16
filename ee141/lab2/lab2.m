@@ -19,7 +19,6 @@ hold on;  %[output:9c4e0857]
 plot(w, abs(X_numerical), 'r--', 'DisplayName', 'Numerical |tilde{X}(e^{j\omega})|'); %[output:9c4e0857]
 hold off;  %[output:9c4e0857]
 
-% Add correct labels and title
 title('Analytical vs. Numerical DTFT'); %[output:9c4e0857]
 xlabel('\omega (rad)'); %[output:9c4e0857]
 ylabel('|X(e^{j\omega})|'); %[output:9c4e0857]
@@ -38,7 +37,6 @@ hold on;  %[output:416ce6c9]
 plot(w, abs(Y_numerical), 'r--', 'DisplayName', 'Numerical |tilde{Y}(e^{j\omega})|'); %[output:416ce6c9]
 hold off;  %[output:416ce6c9]
 
-% Add correct labels and title
 title('Analytical vs. Numerical DTFT'); %[output:416ce6c9]
 xlabel('\omega (rad)'); %[output:416ce6c9]
 ylabel('|Y(e^{j\omega})|'); %[output:416ce6c9]
