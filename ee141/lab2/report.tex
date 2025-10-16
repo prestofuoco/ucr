@@ -13,9 +13,41 @@
 
 \begin{center} \large {\textbf{Lab 2}} \\[0em] {EE141, Digital Signal Processing, Fall 2025} \end{center}
 
-\section{Problem 1: }
+\section{Problem 1: Reviewing and verifying properties of the DTFT}
+In this problem, we consider the discrete time Fourier transform given by
+\begin{equation} \notag
+    X(e^{j\omega}) = \sum_{n=-\infty}^{\infty}x[n]e^{-j\omega n}.
+\end{equation}
+We also consider that if $x[n]$ is a causal sequence, this sum reduces to
+\begin{equation}
+    X(e^{j\omega}) = \sum_{n=0}^{\infty}x[n]e^{-j\omega n},
+\end{equation}
+and we can further truncate the above sum to
+\begin{equation}
+    X(e^{j\omega}) \approx \tilde X(e^{j\omega}) \triangleq \sum_{n=0}^{\infty}x[n]e^{-j\omega n}
+\end{equation}
+if $x[n]$ decays to zero as $n \to \infty$.
+For this problem, we let $x[n]=0.8^nu[n]$ and $y[n]=0.7^n\cos(\frac{\pi n}{6})u[n]$.
+
 \begin{enumerate}[label=\textbf{\alph*)}, leftmargin=2.6em]
-    \item 
+    \item Solving analytically for $x[n]$, we observe
+    \begin{equation} \notag
+        X(e^{j\omega}) = \sum_{n=0}^{\infty}0.8^n e^{-j\omega n}
+    \end{equation}
+    as $x[n]$ is a causal signal, shown in (1). We can further simplify to 
+    \begin{equation} \notag
+        X(e^{j\omega}) = \sum_{n=0}^{\infty}(0.8e^{-j\omega})^n,
+    \end{equation}
+    where we observe this as a converging sum, as $a=0.8<\infty$.
+    Continuing with our idea of infinite geometric series, we can simplify this even further to
+    \begin{equation} \notag
+        X(e^{j\omega}) = \frac{1}{1-0.8e^{-j\omega}}.
+    \end{equation}
+    We can then use this in MATLAB to solve for $X(e^{j\omega})$ in an analytical manner, using our
+    \texttt{w = linspace(-pi, pi, K)} where $K = 500$.
+
+    \item Picking a large enough $N$ s.t. $0.9^N\approx 0$, we can numerically compute $X(e^{j\omega_k})$
+    using (2).
 \end{enumerate}
 
 \end{document}
