@@ -1,10 +1,10 @@
 /*        
 Your Name & E-mail: Andre Winkel, awink002@ucr.edu
 Discussion Section: 024
-Assignment: Lab #2  Exercise #2
-Exercise Description: led counter
+Assignment: Lab #3 Exercise #1
+Exercise Description: 
 I acknowledge all content contained herein, excluding template or example code, is my own original work.
-Demo Link: https://youtu.be/u2tAWFmNCVA
+Demo Link: 
 */
 
 #include <avr/io.h>
