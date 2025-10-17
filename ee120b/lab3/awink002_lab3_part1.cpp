@@ -3,7 +3,7 @@ Discussion Section: 024
 Assignment: Lab #3 Exercise #1
 Exercise Description: reads potentiometer and outputs to serial
 I acknowledge all content contained herein, excluding template or example code, is my own original work.
-Demo Link: YOUR_YOUTUBE_LINK_HERE
+Demo Link: https://youtu.be/2thaSs0Q-LE
 */
 
 #include <avr/io.h>
@@ -13,11 +13,8 @@ Demo Link: YOUR_YOUTUBE_LINK_HERE
 #include "serialATmega.h"
 
 void ADC_init() {
-    // ADMUX: Set REFS0=1 for AVCC reference voltage. 0b01000000
     ADMUX = 0x40;
-    // ADCSRA: Set ADEN=1 to enable ADC, set ADPS2:0=111 for prescaler of 128. 0b10000111
     ADCSRA = 0x87;
-    // ADCSRB: Leave as 0 for free-running mode. 0b00000000
     ADCSRB = 0x00;
   }
   
@@ -31,7 +28,7 @@ unsigned int ADC_read(unsigned char chnl){
 
     uint8_t low, high;
 
-    // Must read ADCL first, then ADCH.
+    // adcl then adch
     low = ADCL;
     high = ADCH;
 
@@ -39,8 +36,8 @@ unsigned int ADC_read(unsigned char chnl){
 }
 
 void Tick() {
-    unsigned int pot_value = ADC_read(0);
-    serial_char(pot_value);
+    unsigned int val = ADC_read(0);
+    serial_println(val);
 }
 
 int main(void) {
