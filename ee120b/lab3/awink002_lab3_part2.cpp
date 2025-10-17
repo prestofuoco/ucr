@@ -38,7 +38,6 @@ int nums[16] = {0b0111111, // 0
                 0b1110001  // F
                 };
 
-//TODO: complete outNum()
 void outNum(int num) {
     PORTB = (nums[num] & 0x1F);
     PORTD = ((nums[num] & 0x60) << 1);
@@ -72,7 +71,7 @@ long map(long x, long in_min, long in_max, long out_min, long out_max) {
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
-enum states {start, AM_PR, AM_REL, FM_PR, FM_REL} state; //TODO: finish the enum for the SM
+enum states {start, AM_PR, AM_REL, FM_PR, FM_REL} state;
 
 void Tick() {
     unsigned int val = ADC_read(0);
@@ -140,9 +139,9 @@ int main(void) {
     TimerOn();
 
     while (1) { 
-        Tick();      // Execute one synchSM tick
-        while (!TimerFlag){}  // Wait for SM period
-        TimerFlag = 0;        // Lower flag
+        Tick();
+        while (!TimerFlag){}
+        TimerFlag = 0;
     }
 
     return 0;

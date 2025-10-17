@@ -1,7 +1,7 @@
 /* Your Name & E-mail: Andre Winkel, awink002@ucr.edu
 Discussion Section: 024
-Assignment: Lab #3 Exercise #2
-Exercise Description: am and fm to 7seg
+Assignment: Lab #3 Exercise #3
+Exercise Description: am and fm to 7seg w/ buzzer
 I acknowledge all content contained herein, excluding template or example code, is my own original work.
 Demo Link: YOUR_YOUTUBE_LINK_HERE
 */
@@ -72,7 +72,7 @@ long map(long x, long in_min, long in_max, long out_min, long out_max) {
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
-enum states {start, AM_PR, AM_REL, FM_PR, FM_REL} state; //TODO: finish the enum for the SM
+enum states {start, AM_PR, AM_REL, FM_PR, FM_REL} state;
 
 void Tick() {
     unsigned int val = ADC_read(0);
@@ -110,15 +110,23 @@ void Tick() {
             break;
         case AM_PR:
             outNum(am);
+            if ((am == 4)) {PORTD |= 0x04;}
+            else {PORTD &= ~0x04;;}
             break;
         case AM_REL:
             outNum(am);
+            if ((am == 4)) {PORTD |= 0x04;}
+            else {PORTD &= ~0x04;;}
             break;
         case FM_PR:
             outNum(fm);
+            if ((fm == 14)) {PORTD |= 0x04;}
+            else {PORTD &= ~0x04;;}
             break;
         case FM_REL:
             outNum(fm);
+            if ((fm == 14)) {PORTD |= 0x04;}
+            else {PORTD &= ~0x04;;}
             break;
         default:
             break;
@@ -140,9 +148,9 @@ int main(void) {
     TimerOn();
 
     while (1) { 
-        Tick();      // Execute one synchSM tick
-        while (!TimerFlag){}  // Wait for SM period
-        TimerFlag = 0;        // Lower flag
+        Tick();
+        while (!TimerFlag){}
+        TimerFlag = 0;
     }
 
     return 0;
