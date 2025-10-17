@@ -121,4 +121,92 @@ of the DC blocker,
     \end{equation}
 \end{enumerate}
 
+\section{Code}
+\begin{verbatim}
+    % Problem 1
+    close all;
+
+    % random number
+    N = 200;
+    m_k = randn([1,N]);
+
+    % min value
+    M_0 = -(min(m_k))
+
+    % normalized sequence
+    m_nk = 1/M_0 * m_k;
+    min(m_nk)
+
+    % average power
+    P_m = (1/N) * sum(m_nk.^2)
+
+    % power efficiency
+    Pm_range = linspace(0.01, 1, 100);
+    a_m = [1, 0.75, 0.5];
+
+    eta_100 = (a_m(1) * Pm_range) ./ (1 + a_m(1) * Pm_range);
+    eta_75 = (a_m(2) * Pm_range) ./ (1 + a_m(2) * Pm_range);
+    eta_50 = (a_m(3) * Pm_range) ./ (1 + a_m(3) * Pm_range);
+
+    figure; 
+    plot(Pm_range, eta_100, 'DisplayName', 'a_{mod} = 1');
+    hold on; 
+    plot(Pm_range, eta_75, 'DisplayName', 'a_{mod} = 0.75');
+    plot(Pm_range, eta_50, 'DisplayName', 'a_{mod} = 0.5');
+    hold off; 
+
+    title('Power Efficiency (\eta_{AM}) vs. Average Power (P_m)');
+    xlabel('Average Power (P_m)');
+    ylabel('Power Efficiency (\eta_{AM})');
+    legend;
+    grid on;
+
+    % values
+    eta_f_100 = (a_m(1) * P_m) / (1 + a_m(1) * P_m) % a_mod = 1
+    eta_f_75 = (a_m(2) * P_m) / (1 + a_m(2) * P_m) % a_mod = 0.75
+    eta_f_50 = (a_m(3) * P_m) / (1 + a_m(3) * P_m) % a_mod = 0.5
+
+    % Problem 2
+    % magnitude response
+    RC = [0.01, 0.1, 1, 10];
+    for val = RC
+        figure; 
+
+        B = 10/(2*pi*val);
+        f = linspace(-B, B, 1000);
+        Hf = (1j*2*pi*f) ./ (1j*2*pi*f + 1/val);
+
+        plot(f, abs(Hf));
+
+        title(['|H(f)| for RC = ', num2str(val)]);
+        xlabel('f (Hz)');
+        ylabel('H(f)|');
+        grid on;
+    end
+
+    % same thing but with 20log10..
+    for val = RC
+        figure; 
+
+        B = 10/(2*pi*val);
+        f = linspace(-B, B, 1000);
+        Hf = (1j*2*pi*f) ./ (1j*2*pi*f + 1/val);
+
+        Hf_dB = 20 * log10(abs(Hf));
+        plot(f, Hf_dB);
+
+        ylim([-60 0]);
+
+        title(['|H(f)| for RC = ', num2str(val)]);
+        xlabel('f (Hz)');
+        ylabel('|H(f)| (dB)');
+        grid on;
+    end
+
+    % removing the dc component
+    f=20;
+    min_gain=0.95;
+    RC_min = sqrt(min_gain^2/((2*pi*f)^2*(1-min_gain^2)))
+\end{verbatim}
+
 \end{document}
