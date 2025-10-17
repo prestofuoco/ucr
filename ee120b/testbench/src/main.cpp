@@ -75,49 +75,52 @@ long map(long x, long in_min, long in_max, long out_min, long out_max) {
 enum states {start, AM_PR, AM_REL, FM_PR, FM_REL} state; //TODO: finish the enum for the SM
 
 void Tick() {
-    //TODO: declare your static variables here or declare it globally
+    unsigned int val = ADC_read(0);
+    unsigned int am = map(val, 0, 1023, 0, 9);
+    unsigned int fm = map(val, 0, 1023, 10, 15);
 
     // State Transistions
-    //TODO: complete transitions 
     switch (state) {
         case start:
             state = AM_REL;
             break;
         case AM_PR:
-            if ((PINC & 0x01)) {state = AM_PR;}
-            else if (!(PINC & 0x01)) {state = AM_REL;}
+            if ((PINC & 0x02)) {state = AM_PR;}
+            else if (!(PINC & 0x02)) {state = AM_REL;}
             break;
         case AM_REL:
-            if ((PINC & 0x01)) {state = FM_PR;}
-            else if (!(PINC & 0x01)) {state = AM_REL;}
+            if ((PINC & 0x02)) {state = FM_PR;}
+            else if (!(PINC & 0x02)) {state = AM_REL;}
             break;
         case FM_PR:
-            if ((PINC & 0x01)) {state = FM_PR;}
-            else if (!(PINC & 0x01)) {state = FM_REL;}
+            if ((PINC & 0x02)) {state = FM_PR;}
+            else if (!(PINC & 0x02)) {state = FM_REL;}
             break;
         case FM_REL:
-            if ((PINC & 0x01)) {state = AM_PR;}
-            else if (!(PINC & 0x01)) {state = FM_REL;}
+            if ((PINC & 0x02)) {state = AM_PR;}
+            else if (!(PINC & 0x02)) {state = FM_REL;}
             break;
         default:
             break;
     }
 
     // State Actions
-    //TODO: complete transitions
     switch (state) {
         case start:
             break;
         case AM_PR:
-
+            outNum(am);
             break;
         case AM_REL:
+            outNum(am);
             break;
         case FM_PR:
+            outNum(fm);
             break;
         case FM_REL:
+            outNum(fm);
             break;
-        case default:
+        default:
             break;
     }
 }
@@ -128,7 +131,7 @@ int main(void) {
 
     DDRB    = 0xFF;
     PORTB   = 0x00;
-    
+
     DDRD    = 0xFF;
     PORTD   = 0x00;
 
