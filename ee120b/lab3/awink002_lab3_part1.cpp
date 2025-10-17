@@ -2,7 +2,7 @@
 Your Name & E-mail: Andre Winkel, awink002@ucr.edu
 Discussion Section: 024
 Assignment: Lab #3 Exercise #1
-Exercise Description: 
+Exercise Description: observing adc values on serial monitor
 I acknowledge all content contained herein, excluding template or example code, is my own original work.
 Demo Link: 
 */
@@ -13,6 +13,10 @@ Demo Link:
 #include "timerISR.h"
 
 #include "serialATmega.h"
+
+void TimerISR() {
+    TimerFlag = 0.5;
+}
 
 void ADC_init() {
     // TODO: figure out register values
@@ -32,27 +36,36 @@ unsigned int ADC_read(unsigned char chnl){
 
     uint8_t low, high;
 
-    low = /*what should this get assigned with?*/;
-    high = /*what should this get assigned with?*/;
+    low = 0;
+    high = 1024;
 
-    return ((high << 8) | low) ;
+    return ((high << 8) | low);
 }
 
+enum States {Start} state;
+
 void Tick() {
-    // TODO: Implement your Tick Function
+    switch(state) {
+        case Start: state = Start; break;
+        default: break;
+    };
+    switch(state) {
+        case Start: ADC_read(0x08); break;
+        default: break;
+    };
 }
 
 int main(void)
 {
     // TODO: Initialize your I/O pins
-    DDRC    = ;
-    PORTC   = ;
+    DDRC = 0x00;
+    PORTC = 0xFF;
 
-    DDRB     = ;
-    PORTB    = ;
+    DDRB = 0xFF;
+    PORTB = 0x00;
 
-    DDRD   = ;
-    PORTD  = ;
+    DDRD = 0xFF;
+    PORTD = 0x00;
 
     ADC_init();
 
