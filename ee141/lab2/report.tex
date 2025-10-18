@@ -46,7 +46,7 @@ For this problem, we let $x[n]=0.8^nu[n]$ and $y[n]=0.7^n\cos(\frac{\pi n}{6})u[
     We can then use this in MATLAB to solve for $X(e^{j\omega})$ in an analytical manner, using our
     \texttt{w = linspace(-pi, pi, K)} where $K = 500$.
 
-    \item Picking a large enough $N$ s.t. $0.9^N\approx 0$ (ended up choosing $N=10000$), we use MATLAB to numerically compute 
+    \item Picking a large enough $N$ s.t. $0.9^N\approx 0$ (used $N=50$), we use MATLAB to numerically compute 
     $X(e^{j\omega_k})$ using (2).
 
     \item Plotting the analytical and numerical solutions, we observe the following:
@@ -56,12 +56,20 @@ For this problem, we let $x[n]=0.8^nu[n]$ and $y[n]=0.7^n\cos(\frac{\pi n}{6})u[
     \end{figure}
 
     \item Doing the same for $y[n]$, we observe the following plot:
-        \begin{figure} [H]
+    \begin{figure} [H]
         \centering
         \includegraphics[width=0.6\linewidth]{partd.png}
     \end{figure}
 
-    \item 
+    \item We now let $z[n] = 2x[n] + 3y[n]$. Analytically computing $Z(e^{j\omega_k})$ and numerically computing
+    $\tilde Z(e^{j\omega_k})$ using the same $\omega_k$ as in the previous parts, we observe the following
+    magnitude and sum plots:
+    \begin{figure} [H]
+        \centering
+        \includegraphics[width=0.4\linewidth]{parte1.png}
+        \includegraphics[width=0.4\linewidth]{parte2.png}
+    \end{figure}
+
 
 \end{enumerate}
 
